@@ -4,8 +4,10 @@ import com.accenture.ritsu.ritsuApi.common.SetType;
 import com.accenture.ritsu.ritsuApi.engine.EngineContext;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class MappingINode implements INode {
+public class MappingNode implements INode, Serializable {
 
     private INode next;
     private String pathToSet;
@@ -13,7 +15,7 @@ public class MappingINode implements INode {
     private SetType setType;
 
     @Override
-    public INode getNext(EngineContext context) {
+    public INode processNext(EngineContext context) {
         return null;
     }
 }

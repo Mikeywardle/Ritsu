@@ -7,16 +7,18 @@ import java.io.Serializable;
 
 @Getter
 public class DataFrame implements Serializable {
-    private INode inital = new InitialINode();
+    private InitialNode inital = new InitialNode();
+
+    public DataFrame(InitialNode inital){this.inital=inital;}
 
     public void process(EngineContext context){
         run(inital, context);
     }
 
     private void run(INode INode, EngineContext context){
-        INode next = INode.getNext(context);
+        INode next = INode.processNext(context);
         if(next==null)
             return;
-        run(INode, context);
+        run(next, context);
     }
 }
